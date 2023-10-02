@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,13 +9,30 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  wrongPass = false;
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
   });
-
+  constructor(private authService: AuthService, private router: Router) {}
   onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.loginForm.value);
+    if (this.loginForm.valid) {
+      const { email, password } = this.loginForm.value;
+      this.authService.login(email, password).subscribe(
+        (response) => {
+          sessionStorage.setItem('username', JSON.stringify(response));
+          // navigate to home page
+          this.router.navigate(['/home']);
+          this.wrongPass = false;
+          // show success message
+        },
+        (error) => {
+          console.error('api error ho gaya', error);
+          this.wrongPass = true;
+          // handle error response
+          // show error message
+        }
+      );
+    }
   }
 }

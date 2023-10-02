@@ -33,6 +33,9 @@
             required
           />
         </div>
+        <div *ngIf="wrongPass" class="text-danger mt-2">
+          Email or Password is wrong, Please try again.
+        </div>
         <div class="d-flex justify-content-between align-items-center">
           <button
             type="submit"
