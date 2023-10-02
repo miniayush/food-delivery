@@ -1,0 +1,61 @@
+<!-- profile.component.html -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <!-- display the profile picture and name -->
+      <div class="card mb-3">
+        <img
+          src="{{ profile.picture }}"
+          class="card-img-top"
+          alt="Profile picture"
+        />
+        <div class="card-body d-flex justify-content-between">
+          <h5 class="card-title">{{ profile.name }}</h5>
+          <a href="#" class="btn btn-primary">Edit Profile</a>
+        </div>
+      </div>
+      <!-- display the edit profile button -->
+      <div class="card mb-3"></div>
+      <!-- display the profile details -->
+      <div class="card mb-3">
+        <div class="card-header">Profile Details</div>
+        <p class="card-text"><strong>Email:</strong> {{ profile.email }}</p>
+        <p class="card-text"><strong>Phone:</strong> {{ profile.phone }}</p>
+        <p class="card-text"><strong>Address:</strong> {{ profile.address }}</p>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <!-- display the recent orders -->
+      <div class="card mb-3">
+        <div class="card-header">Recent Orders</div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <!-- use ngFor to loop through the orders array -->
+            <li *ngFor="let order of profile.orders" class="list-group-item">
+              <!-- display the order details -->
+              <p><strong>Order ID:</strong> {{ order.id }}</p>
+              <p>
+                <strong>Date, Time:</strong>
+                {{ order.dateTime | date : "short" }}
+              </p>
+              <p><strong>Status:</strong> {{ order.status }}</p>
+              <!-- use ngIf to show the rating if it exists -->
+              <p *ngIf="order.rating">
+                <strong>Rating:</strong> {{ order.rating }}/5
+              </p>
+              <!-- use ngFor to loop through the items array -->
+              <ul *ngFor="let item of order.items">
+                <!-- display the item details -->
+                <li>{{ item.name }} - {{ item.price | currency : "INR" }}</li>
+              </ul>
+              <!-- display the total amount -->
+              <p>
+                <strong>Total:</strong> {{ order.total | currency : "INR" }}
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

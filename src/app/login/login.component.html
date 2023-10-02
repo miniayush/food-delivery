@@ -1,0 +1,57 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <h2 class="text-center mb-4">Login</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <input
+            type="email"
+            id="email"
+            formControlName="email"
+            class="form-control"
+            placeholder="Email"
+            required
+          />
+          <div
+            *ngIf="
+              loginForm.get('email')!.invalid &&
+              loginForm.get('email')!.touched &&
+              !loginForm.get('email')!.pending
+            "
+            class="text-danger mt-2"
+          >
+            Please enter a valid email.
+          </div>
+        </div>
+        <div class="form-group mt-2">
+          <input
+            type="password"
+            id="pwd"
+            formControlName="password"
+            class="form-control"
+            placeholder="Password"
+            required
+          />
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+          <button
+            type="submit"
+            [disabled]="!loginForm.valid"
+            class="btn btn-primary mt-3"
+          >
+            Log In
+          </button>
+          <a href="#" class="mt-3">Forgot Password?</a>
+        </div>
+      </form>
+      <div class="d-flex align-items-center my-3">
+        <hr class="flex-grow-1" />
+        <span class="mx-2">or</span>
+        <hr class="flex-grow-1" />
+      </div>
+      <div class="text-center">
+        <button class="btn btn-success btn-block">Create New Account</button>
+      </div>
+    </div>
+  </div>
+</div>

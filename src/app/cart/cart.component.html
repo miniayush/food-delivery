@@ -1,0 +1,25 @@
+<!-- cart.component.html -->
+<div class="container">
+  <h2>Your Cart</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cartItems">
+        <td>{{ item.name }}</td>
+        <td>{{ item.price }}</td>
+        <td>
+          <button (click)="decreaseQuantity(item)">-</button>
+          {{ item.quantity }}
+          <button (click)="increaseQuantity(item)">+</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Total Price: {{ getTotalPrice() }}</h3>
+</div>
