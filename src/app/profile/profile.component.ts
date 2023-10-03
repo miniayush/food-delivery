@@ -35,7 +35,9 @@ export class ProfileComponent implements OnInit {
   constructor(private userService: UserService) {}
   ngOnInit(): void {
     // get the profile data from the service
-    this.profile = this.userService.user;
+    console.log(this.userService);
+    
+    this.profile = this.userService.user.user;
     this.profile.orders = this.orders;
     function calculateTotal(profile: any): void {
       let total = 0;
