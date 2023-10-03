@@ -10,12 +10,16 @@ import { RestaurantService } from '../services/restaurant.service';
 export class RestaurantLibraryComponent implements OnInit {
   restaurants: any;
 
-  constructor(
-    private http: HttpClient,
-    private restaurantService: RestaurantService
-  ) {}
+  constructor(private restaurantService: RestaurantService) {}
 
   ngOnInit(): void {
-    this.restaurants = this.restaurantService.getRestaurants();
+    this.restaurants = this.restaurantService.getRestaurants().subscribe(
+      (response) => {
+        this.restaurantService.restaurants = response;
+      },
+      (error) => {
+        //handle
+      }
+    );
   }
 }

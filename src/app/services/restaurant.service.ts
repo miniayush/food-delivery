@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class RestaurantService {
   private apiUrl = 'https://localhost:7261/api/Restaurant'; // replace with your API URL
-
+  restaurants: any;
   constructor(private http: HttpClient) {}
   getRestaurants() {
     return this.http.post(this.apiUrl, {});
