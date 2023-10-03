@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -18,14 +19,15 @@ export class LoginComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private userService: UserService
   ) {}
   onSubmit() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
       this.authService.login(email, password).subscribe(
         (response) => {
-          sessionStorage.setItem('username', JSON.stringify(response));
+          this.userService.user = response;
           this.router.navigate(['']);
           this.wrongPass = false;
           this.authService.setLoggedIn(true);
