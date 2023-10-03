@@ -1,0 +1,67 @@
+<div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img
+        [src]="foodItem.image"
+        class="img-fluid rounded-start"
+        alt="{{ foodItem.name }}"
+      />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <!-- existing code... -->
+        <div class="d-flex justify-content-between">
+          <h5 class="card-title mt-2">{{ foodItem.name }}</h5>
+          <div class="container" *ngIf="!isInCart(foodItem); else cartControls">
+            <button
+              (click)="addToCart(foodItem)"
+              class="btn btn-primary btn-sm mt-2"
+            >
+              Add to Cart
+            </button>
+          </div>
+          <ng-template #cartControls>
+            <div class="d-flex align-items-center">
+              <button
+                (click)="decrementCount(foodItem)"
+                class="btn btn-secondary"
+              >
+                -
+              </button>
+              <div class="mx-2">{{ getCartCount(foodItem) }}</div>
+              <button
+                (click)="incrementCount(foodItem)"
+                class="btn btn-secondary"
+              >
+                +
+              </button>
+            </div>
+          </ng-template>
+        </div>
+        <!-- existing code... -->
+
+        <p class="card-text">{{ foodItem.description }}</p>
+        <p class="card-text">
+          <span style="color: gold">
+            <i
+              *ngFor="let i of [].constructor(getStars(foodItem.rating).filled)"
+              class="bi bi-star-fill"
+            ></i>
+            <i
+              *ngIf="getStars(foodItem.rating).half === 1"
+              class="bi bi-star-half"
+            ></i>
+            <i
+              *ngFor="
+                let i of [].constructor(getStars(foodItem.rating).unfilled)
+              "
+              class="bi bi-star"
+            ></i>
+          </span>
+          <small class="text-muted"> ₹{{ foodItem.price }}</small>
+          <br />
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

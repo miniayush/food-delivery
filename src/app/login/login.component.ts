@@ -30,8 +30,7 @@ export class LoginComponent {
         (error) => {
           console.error('api error ho gaya', error);
           this.wrongPass = true;
-          this.authService.setLoggedIn(true); //set to false
-          this.router.navigate(['']); // remove this line
+          this.authService.setLoggedIn(false); //set to false
           // handle error response
           // show error message
         }

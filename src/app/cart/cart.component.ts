@@ -1,5 +1,5 @@
-// cart.component.ts
 import { Component } from '@angular/core';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -7,33 +7,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent {
-  cartItems = [
-    { name: 'Burger', price: 50, quantity: 2 },
-    { name: 'Pizza', price: 30, quantity: 1 },
-    { name: 'Steak', price: 20, quantity: 3 },
-  ];
+  cartItems: any[];
+
+  constructor(private cartService: CartService) {
+    this.cartItems = this.cartService.getCartItems();
+  }
+
+  getCartCount(foodItem: any) {
+    return this.cartService.getCartCount(foodItem);
+  }
 
   getTotalPrice() {
-    let total = 0;
-    for (let item of this.cartItems) {
-      total += item.price * item.quantity;
-    }
-    return total;
+    return this.cartService.getTotalPrice();
   }
 
-  increaseQuantity(item: any) {
-    item.quantity++;
-  }
-
-  decreaseQuantity(item: any) {
-    if (item.quantity > 1) {
-      item.quantity--;
-    } else {
-      this.removeItem(item);
-    }
-  }
-
-  removeItem(itemToRemove: any) {
-    this.cartItems = this.cartItems.filter((item) => item !== itemToRemove);
+  getUniqueCartItems() {
+    return Array.from(new Set(this.cartItems));
   }
 }

@@ -12,7 +12,9 @@ import { RestaurantLibraryComponent } from './restaurant-library/restaurant-libr
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FoodItemComponent } from './food-item/food-item.component';
+import { FoodLibraryComponent } from './food-library/food-library.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     RestaurantCardComponent,
     RestaurantLibraryComponent,
     LoginComponent,
+    FoodItemComponent,
+    FoodLibraryComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +35,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     NgxSkeletonLoaderModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
