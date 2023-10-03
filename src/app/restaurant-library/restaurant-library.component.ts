@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { RestaurantService } from '../services/restaurant.service';
 
 @Component({
   selector: 'app-restaurant-library',
@@ -7,15 +8,14 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./restaurant-library.component.css'],
 })
 export class RestaurantLibraryComponent implements OnInit {
-  restaurants = [];
+  restaurants: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private restaurantService: RestaurantService
+  ) {}
 
   ngOnInit(): void {
-    this.http
-      .get('https://6517d7c2582f58d62d352813.mockapi.io/restaurants')
-      .subscribe((data: any) => {
-        this.restaurants = data;
-      });
+    this.restaurants = this.restaurantService.getRestaurants();
   }
 }
