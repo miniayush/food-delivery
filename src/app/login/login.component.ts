@@ -22,13 +22,15 @@ export class LoginComponent {
         (response) => {
           sessionStorage.setItem('username', JSON.stringify(response));
           // navigate to home page
-          this.router.navigate(['/home']);
+          this.router.navigate(['']);
           this.wrongPass = false;
+          this.authService.isLoggedIn = true;
           // show success message
         },
         (error) => {
           console.error('api error ho gaya', error);
           this.wrongPass = true;
+          this.authService.isLoggedIn = false;
           // handle error response
           // show error message
         }
