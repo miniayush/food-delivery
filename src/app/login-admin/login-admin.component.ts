@@ -1,22 +1,21 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-
+import { AuthAdminService } from '../services/auth-admin.service';
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  selector: 'app-login-admin',
+  templateUrl: './login-admin.component.html',
+  styleUrls: ['./login-admin.component.css'],
 })
-export class LoginComponent {
-  wrongPass = false;
+export class LoginAdminComponent {
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
   });
+  wrongPass = false;
   constructor(
-    private authService: AuthService,
+    private authService: AuthAdminService,
     private router: Router,
     private toastr: ToastrService
   ) {}
@@ -25,16 +24,17 @@ export class LoginComponent {
       const { email, password } = this.loginForm.value;
       this.authService.login(email, password).subscribe(
         (response) => {
-          sessionStorage.setItem('username', JSON.stringify(response));
-          this.router.navigate(['']);
+          sessionStorage.setItem('admin', JSON.stringify(response));
           this.wrongPass = false;
+          // navigate to admin portal
+          this.router.navigate(['adminportal']);
           this.authService.setLoggedIn(true);
-          this.toastr.success('Login successful');
+          // show success message
+          this.toastr.success('Login successful'); // Show success toast
         },
         (error) => {
-          this.wrongPass = true;
           this.authService.setLoggedIn(false);
-          this.toastr.error('Login failed');
+          this.toastr.error('Login failed'); // API error
         }
       );
     }

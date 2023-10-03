@@ -15,6 +15,11 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FoodItemComponent } from './food-item/food-item.component';
 import { FoodLibraryComponent } from './food-library/food-library.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginAdminComponent } from './login-admin/login-admin.component';
+import { AdminPortalComponent } from './admin-portal/admin-portal.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +33,9 @@ import { FoodLibraryComponent } from './food-library/food-library.component';
     LoginComponent,
     FoodItemComponent,
     FoodLibraryComponent,
+    ResetPasswordComponent,
+    LoginAdminComponent,
+    AdminPortalComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +44,8 @@ import { FoodLibraryComponent } from './food-library/food-library.component';
     NgxSkeletonLoaderModule,
     ReactiveFormsModule,
     FormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

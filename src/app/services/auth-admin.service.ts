@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
+export class AuthAdminService {
   private apiUrl = 'http://your-api-url.com'; // replace with your API URL
   private isLoggedIn = false; //set to false
   private authStatusListener = new Subject<boolean>();
@@ -13,10 +13,13 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(email: any, password: any) {
-    return this.http.post(`${this.apiUrl}/authenticate`, {
-      username: email,
-      password: password,
-    });
+    return this.http.post(
+      `${this.apiUrl}/authadmin`, //change if requires
+      {
+        username: email,
+        password: password,
+      }
+    );
   }
 
   isAuthenticated() {
