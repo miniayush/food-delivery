@@ -19,7 +19,6 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
-import { AdminPortalComponent } from './admin-portal/admin-portal.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +34,6 @@ import { AdminPortalComponent } from './admin-portal/admin-portal.component';
     FoodLibraryComponent,
     ResetPasswordComponent,
     LoginAdminComponent,
-    AdminPortalComponent,
   ],
   imports: [
     BrowserModule,
