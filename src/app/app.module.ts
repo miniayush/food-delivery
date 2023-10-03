@@ -19,6 +19,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { LoginAdminComponent } from './login-admin/login-admin.component';
     FoodLibraryComponent,
     ResetPasswordComponent,
     LoginAdminComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

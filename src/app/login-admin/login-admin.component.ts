@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthAdminService } from '../services/auth-admin.service';
+import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-login-admin',
   templateUrl: './login-admin.component.html',
@@ -17,14 +18,15 @@ export class LoginAdminComponent {
   constructor(
     private authService: AuthAdminService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private userService: UserService
   ) {}
   onSubmit() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
       this.authService.login(email, password).subscribe(
         (response) => {
-          sessionStorage.setItem('admin', JSON.stringify(response));
+          this.userService.user = response;
           this.wrongPass = false;
           // navigate to admin portal
           this.router.navigate(['adminportal']);

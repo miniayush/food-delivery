@@ -8,6 +8,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { FoodLibraryComponent } from './food-library/food-library.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
   { path: 'food', component: FoodLibraryComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'admin', component: LoginAdminComponent },
   { path: 'reset', component: ResetPasswordComponent },
 ];
