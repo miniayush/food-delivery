@@ -24,13 +24,14 @@ export class LoginComponent {
           // navigate to home page
           this.router.navigate(['']);
           this.wrongPass = false;
-          this.authService.isLoggedIn = true;
+          this.authService.setLoggedIn(true);
           // show success message
         },
         (error) => {
           console.error('api error ho gaya', error);
           this.wrongPass = true;
-          this.authService.isLoggedIn = false;
+          this.authService.setLoggedIn(true); //set to false
+          this.router.navigate(['']); // remove this line
           // handle error response
           // show error message
         }

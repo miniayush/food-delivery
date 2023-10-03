@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private apiUrl = 'http://your-api-url.com'; // replace with your API URL
-  isLoggedIn = false;
+  private isLoggedIn = false;
+  private authStatusListener = new Subject<boolean>();
+
   constructor(private http: HttpClient) {}
 
   login(email: any, password: any) {
@@ -15,7 +18,17 @@ export class AuthService {
       password: password,
     });
   }
+
   isAuthenticated() {
     return this.isLoggedIn;
+  }
+
+  getAuthStatusListener() {
+    return this.authStatusListener.asObservable();
+  }
+
+  setLoggedIn(value: boolean) {
+    this.isLoggedIn = value;
+    this.authStatusListener.next(value);
   }
 }

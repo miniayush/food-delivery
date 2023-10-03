@@ -4,11 +4,12 @@ import { HomeComponent } from './home/home.component';
 import { CartComponent } from './cart/cart.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'cart', component: CartComponent },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
 ];
 

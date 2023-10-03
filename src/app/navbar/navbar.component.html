@@ -4,7 +4,7 @@
   >
     <a class="navbar-brand col-sm-2" routerLink="/">Food Delivery</a>
 
-    <form class="d-flex my-2 my-lg-0 col-sm-5">
+    <form *ngIf="isLoggedIn" class="d-flex my-2 my-lg-0 col-sm-5">
       <input
         class="form-control form-control-sm"
         type="search"
@@ -14,6 +14,7 @@
     </form>
 
     <ul
+      *ngIf="isLoggedIn"
       class="navbar-nav d-flex list-unstyled col-sm-2 justify-content-end align-items-center"
     >
       <li class="nav-item me-3">
