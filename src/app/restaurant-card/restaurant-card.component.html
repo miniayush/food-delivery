@@ -11,7 +11,7 @@
     <!-- Actual image with load event handler -->
     <img
       [hidden]="!imageLoaded"
-      [src]="restaurant.img"
+      [src]="restaurant.imageUrl"
       (load)="onImageLoad()"
       #image
       alt="Restaurant image"
