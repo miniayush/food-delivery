@@ -13,7 +13,7 @@ export class FoodLibraryComponent implements OnInit {
   constructor(private foodService: FoodService) {}
 
   ngOnInit() {
-    this.foodService.getFoodDetails('yourRestaurantId').subscribe((data) => {
+    this.foodService.getFoodDetails('2').subscribe((data) => {
       this.foodItems = data;
     });
   }

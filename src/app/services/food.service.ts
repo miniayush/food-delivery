@@ -3,11 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface Food {
-  image: string;
-  name: string;
-  description: string;
-  rating: number;
-  price: number;
+  "id": number,
+    "name": string,
+    "description": string,
+    "rating": number,
+    "imageUrl": string,
+    "restaurantId": number
 }
 
 @Injectable({
@@ -19,7 +20,7 @@ export class FoodService {
   constructor(private http: HttpClient) {}
 
   getFoodDetails(restaurantId: string): Observable<Food[]> {
-    const url = `${this.apiUrl}${restaurantId}/food-items`; // replace with your API path
+    const url = `${this.apiUrl}${restaurantId}/fooditems`; // replace with your API path
     return this.http.get<Food[]>(url);
   }
 }
