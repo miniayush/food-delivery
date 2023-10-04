@@ -1,0 +1,20 @@
+<!-- order-card.component.html -->
+<div class="card text-center">
+  <div class="card-header bg-primary text-white">
+    <h5>Order ID: {{ orderData.orderId }}</h5>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Restaurant ID: {{ orderData.restaurantId }}</h5>
+    <p class="card-text">Customer ID: {{ orderData.customerId }}</p>
+    <p class="card-text">Order Time: {{ orderData.orderTime }}</p>
+    <h6 class="card-subtitle mb-2 text-muted">Food Items:</h6>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let foodItem of orderData.food">
+        {{ foodItem.name }} - {{ foodItem.price | currency : "INR" }}
+      </li>
+    </ul>
+    <div class="card-footer bg-transparent border-success">
+      Total : {{ orderData.total | currency : "INR" }}
+    </div>
+  </div>
+</div>

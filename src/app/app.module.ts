@@ -20,6 +20,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { RegisterComponent } from './register/register.component';
+import { RestaurantOrderComponent } from './restaurant-order/restaurant-order.component';
+import { UserOrderComponent } from './user-order/user-order.component';
+import { OrderCardComponent } from './order-card/order-card.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,9 @@ import { RegisterComponent } from './register/register.component';
     ResetPasswordComponent,
     LoginAdminComponent,
     RegisterComponent,
+    RestaurantOrderComponent,
+    UserOrderComponent,
+    OrderCardComponent,
   ],
   imports: [
     BrowserModule,
