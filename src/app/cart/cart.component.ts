@@ -34,6 +34,7 @@ export class CartComponent {
   }
   checkout() {
     let cartItems = this.cartService.getCartItems();
+    debugger;
     // let cartItems = [
     //   {
     //     id: 11,
