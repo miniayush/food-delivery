@@ -14,34 +14,9 @@ export interface Order {
   providedIn: 'root',
 })
 export class OrderService {
-  orderData: any[] = [
-    {
-      orderId: 123,
-      restaurantId: 456,
-      userId: 111,
-      status: 'active',
-      orderTime: "'Thu Oct 05 2023 00:06:25 GMT+0530 (India Standard Time)'",
-      food: '[{"name":"burger","price":23},{"name":"pizza","price":32}]',
-    },
-    {
-      orderId: 124,
-      restaurantId: 457,
-      userId: 111,
-      status: 'cancelled',
-      orderTime: "'Fri Oct 06 2023 01:07:26 GMT+0530 (India Standard Time)'",
-      food: '[{"name":"pasta","price":22},{"name":"tacos","price":12}]',
-    },
-    {
-      orderId: 125,
-      restaurantId: 457,
-      userId: 111,
-      status: 'completed',
-      orderTime: "'Fri Oct 06 2023 01:07:26 GMT+0530 (India Standard Time)'",
-      food: '[{"name":"pasta","price":22},{"name":"tacos","price":12}]',
-    },
-  ];
+  orderData: any[] = [];
 
-  private apiUrl = 'http://example.com/api/orders'; // replace with your API endpoint
+  private apiUrl = 'https://localhost:7261/api/Order/'; // replace with your API endpoint
 
   constructor(private http: HttpClient) {}
 
@@ -49,11 +24,11 @@ export class OrderService {
     return this.http.get<Order[]>(this.apiUrl);
   }
 
-  getOrdersByRestaurant(restaurantId: string): Observable<Order[]> {
+  getOrdersByRestaurant(restaurantId: number): Observable<Order[]> {
     return this.http.get<Order[]>(`${this.apiUrl}/restaurant/${restaurantId}`);
   }
 
-  getOrdersByUser(userId: string): Observable<Order[]> {
+  getOrdersByUser(userId: number): Observable<Order[]> {
     return this.http.get<Order[]>(`${this.apiUrl}/user/${userId}`);
   }
 
