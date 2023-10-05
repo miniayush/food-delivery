@@ -18,6 +18,8 @@ export class ProfileComponent implements OnInit {
     private toastr: ToastrService
   ) {}
   ngOnInit(): void {
+    console.log('profile initiated');
+
     // get the profile data from the service
     this.profile = this.userService.getUser().user;
     let userId = this.profile.id;
