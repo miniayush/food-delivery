@@ -23,7 +23,7 @@ export class ProfileComponent implements OnInit {
     let userId = 1;
     this.orderService.getOrdersByUser(userId).subscribe(
       (response) => {
-        this.orders = response;
+        this.orders = this.orderService.loadData(response);
       },
       (err) => {
         this.toastr.error('Error!', "Couldn't load orders", {
@@ -31,7 +31,5 @@ export class ProfileComponent implements OnInit {
         });
       }
     );
-    this.orders = this.orderService.loadData();
-    debugger;
   }
 }

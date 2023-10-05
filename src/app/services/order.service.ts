@@ -14,8 +14,6 @@ export interface Order {
   providedIn: 'root',
 })
 export class OrderService {
-  orderData: any[] = [];
-
   private apiUrl = 'https://localhost:7261/api/Order/'; // replace with your API endpoint
 
   constructor(private http: HttpClient) {}
@@ -32,16 +30,15 @@ export class OrderService {
     return this.http.get<Order[]>(`${this.apiUrl}/user/${userId}`);
   }
 
-  loadData() {
+  loadData(orderData: any) {
     //add parameter orderData and return sorted array
     // Parse the food string into an array of objects for each order
-    this.orderData.sort((a: any, b: any) => {
+    orderData.sort((a: any, b: any) => {
       if (a.status === 'active' && b.status !== 'active') return 1;
       else if (a.status !== 'active' && b.status === 'active') return -1;
       else return new Date(a.orderTime) > new Date(b.orderTime) ? 1 : -1;
     });
-    debugger;
-    this.orderData.forEach((order: any) => {
+    orderData.forEach((order: any) => {
       order.food = JSON.parse(order.food);
       order.total = 0;
       order.food.forEach((item: any) => {
@@ -49,7 +46,7 @@ export class OrderService {
       });
       order.orderTime = this.formatDate(order.orderTime);
     });
-    return this.orderData;
+    return orderData;
   }
 
   formatDate(dateStr: string): string {
