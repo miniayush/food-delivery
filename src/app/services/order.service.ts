@@ -14,7 +14,7 @@ export interface Order {
   providedIn: 'root',
 })
 export class OrderService {
-  private apiUrl = 'https://localhost:7261/api/Order/'; // replace with your API endpoint
+  private apiUrl = 'https://localhost:7261/api/Order'; // replace with your API endpoint
 
   constructor(private http: HttpClient) {}
 
