@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     // get the profile data from the service
     this.profile = this.userService.user.user;
-    let userId = 1;
+    let userId = this.profile.id;
     this.orderService.getOrdersByUser(userId).subscribe(
       (response) => {
         this.orders = this.orderService.loadData(response);
