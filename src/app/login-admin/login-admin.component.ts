@@ -26,7 +26,7 @@ export class LoginAdminComponent {
       const { email, password } = this.loginForm.value;
       this.authService.login(email, password).subscribe(
         (response) => {
-          this.userService.user = response;
+          this.userService.setUser(response);
           this.wrongPass = false;
           // navigate to admin portal
           this.router.navigate(['adminportal']);
