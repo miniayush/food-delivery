@@ -1,12 +1,19 @@
 <!-- order-card.component.html -->
 <div class="card text-center">
-  <div class="card-header bg-primary text-white">
+  <div
+    class="card-header text-white d-flex justify-content-between"
+    [ngClass]="{
+      'bg-success text-white': orderData.status === 'completed',
+      'bg-danger text-white': orderData.status === 'cancelled',
+      'bg-warning text-white': orderData.status === 'active'
+    }"
+  >
     <h5>Order ID: {{ orderData.orderId }}</h5>
+    <h6>{{ orderData.orderTime }}</h6>
   </div>
   <div class="card-body">
     <h5 class="card-title">Restaurant ID: {{ orderData.restaurantId }}</h5>
-    <p class="card-text">Customer ID: {{ orderData.customerId }}</p>
-    <p class="card-text">Order Time: {{ orderData.orderTime }}</p>
+    <!-- show restaurant name -->
     <h6 class="card-subtitle mb-2 text-muted">Food Items:</h6>
     <ul class="list-group list-group-flush">
       <li class="list-group-item" *ngFor="let foodItem of orderData.food">

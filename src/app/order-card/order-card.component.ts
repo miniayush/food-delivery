@@ -10,7 +10,5 @@ export class OrderCardComponent implements OnInit {
   @Input() orderData: any;
 
   constructor() {}
-  ngOnInit(): void {
-    // console.log(this.orderData);
-  }
+  ngOnInit(): void {}
 }
