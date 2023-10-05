@@ -33,39 +33,39 @@ export class CartComponent {
     return Array.from(new Set(this.cartItems));
   }
   checkout() {
-    // let cartItems = this.cartService.getCartItems();
-    let cartItems = [
-      {
-        id: 11,
-        name: 'Veg Burger',
-        description: 'Vegetarian burger with fresh veggies.',
-        rating: 4.2,
-        imageUrl:
-          'https://i.pinimg.com/564x/23/ed/80/23ed80fa26efafc1b694094243b0e0bd.jpg',
-        price: 80,
-        restaurantId: 2,
-      },
-      {
-        id: 11,
-        name: 'Veg Burger',
-        description: 'Vegetarian burger with fresh veggies.',
-        rating: 4.2,
-        imageUrl:
-          'https://i.pinimg.com/564x/23/ed/80/23ed80fa26efafc1b694094243b0e0bd.jpg',
-        price: 80,
-        restaurantId: 2,
-      },
-      {
-        id: 12,
-        name: 'Crispy Burger',
-        description: 'Crispy and crunchy burger with a special sauce.',
-        rating: 4.1,
-        imageUrl:
-          'https://freepngimg.com/thumb/burger%20sandwich/16-hamburger-burger-png-image-mac-burger.png',
-        price: 150,
-        restaurantId: 2,
-      },
-    ];
+    let cartItems = this.cartService.getCartItems();
+    // let cartItems = [
+    //   {
+    //     id: 11,
+    //     name: 'Veg Burger',
+    //     description: 'Vegetarian burger with fresh veggies.',
+    //     rating: 4.2,
+    //     imageUrl:
+    //       'https://i.pinimg.com/564x/23/ed/80/23ed80fa26efafc1b694094243b0e0bd.jpg',
+    //     price: 80,
+    //     restaurantId: 2,
+    //   },
+    //   {
+    //     id: 11,
+    //     name: 'Veg Burger',
+    //     description: 'Vegetarian burger with fresh veggies.',
+    //     rating: 4.2,
+    //     imageUrl:
+    //       'https://i.pinimg.com/564x/23/ed/80/23ed80fa26efafc1b694094243b0e0bd.jpg',
+    //     price: 80,
+    //     restaurantId: 2,
+    //   },
+    //   {
+    //     id: 12,
+    //     name: 'Crispy Burger',
+    //     description: 'Crispy and crunchy burger with a special sauce.',
+    //     rating: 4.1,
+    //     imageUrl:
+    //       'https://freepngimg.com/thumb/burger%20sandwich/16-hamburger-burger-png-image-mac-burger.png',
+    //     price: 150,
+    //     restaurantId: 2,
+    //   },
+    // ];
 
     let request = {
       orderId: 0,
