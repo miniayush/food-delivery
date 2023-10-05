@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
         this.orders = this.orderService.loadData(response);
       },
       (err) => {
-        this.toastr.error('Error!', "Couldn't load orders", {
+        this.toastr.error("Couldn't load orders", 'Error!', {
           positionClass: 'toast-bottom-right',
         });
       }

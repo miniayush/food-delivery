@@ -9,6 +9,6 @@
 
   <div *ngIf="cartItems.length > 0" class="d-flex justify-content-between">
     <h5>Total Price: ₹{{ getTotalPrice() }}</h5>
-    <button class="btn btn-primary">Checkout</button>
+    <button class="btn btn-primary" (click)="(checkout)">Checkout</button>
   </div>
 </div>

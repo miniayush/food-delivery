@@ -31,12 +31,16 @@ export class LoginComponent {
           this.router.navigate(['']);
           this.wrongPass = false;
           this.authService.setLoggedIn(true);
-          this.toastr.success('Login successful');
+          this.toastr.success('Login successful', '', {
+            positionClass: 'toast-bottom-right',
+          });
         },
         (error) => {
           this.wrongPass = true;
           this.authService.setLoggedIn(false);
-          this.toastr.error('Login failed');
+          this.toastr.error('Login failed', '', {
+            positionClass: 'toast-bottom-right',
+          });
         }
       );
     }
