@@ -34,6 +34,7 @@ export class CartComponent {
   }
   checkout() {
     let cartItems = this.cartService.getCartItems();
+    debugger;
     // let cartItems = [
     //   {
     //     id: 11,
@@ -70,7 +71,7 @@ export class CartComponent {
     let request = {
       orderId: 0,
       restaurantId: cartItems[0].restaurantId,
-      userId: this.userService.user.user.id,
+      userId: this.userService.getUser().user.id,
       orderTime: Date(),
       food: this.reduceCart(cartItems),
       status: 'active',

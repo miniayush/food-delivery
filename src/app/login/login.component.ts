@@ -27,7 +27,7 @@ export class LoginComponent {
       const { email, password } = this.loginForm.value;
       this.authService.login(email, password).subscribe(
         (response) => {
-          this.userService.user = response;
+          this.userService.setUser(response);
           this.router.navigate(['']);
           this.wrongPass = false;
           this.authService.setLoggedIn(true);
