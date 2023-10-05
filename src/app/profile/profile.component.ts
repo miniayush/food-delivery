@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { OrderService } from '../services/order.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,9 +9,16 @@ import { UserService } from '../services/user.service';
 })
 export class ProfileComponent implements OnInit {
   profile: any;
-  constructor(private userService: UserService) {}
+  orders: any[] = [];
+
+  constructor(
+    private userService: UserService,
+    private orderService: OrderService
+  ) {}
   ngOnInit(): void {
     // get the profile data from the service
     this.profile = this.userService.user.user;
+    this.orders = this.orderService.loadData();
+    debugger;
   }
 }

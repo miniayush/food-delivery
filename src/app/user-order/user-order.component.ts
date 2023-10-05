@@ -1,6 +1,6 @@
 // user-order.component.ts
 import { isNgTemplate } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Order, OrderService } from '../services/order.service';
 import { formatDate } from '@angular/common';
 import { Food } from '../services/food.service';
@@ -11,12 +11,11 @@ import { Food } from '../services/food.service';
   styleUrls: ['./user-order.component.css'],
 })
 export class UserOrderComponent implements OnInit {
-  orders: any[] = [];
+  @Input() orders: any;
 
-  constructor(private orderService: OrderService) {}
+  constructor() {}
 
   ngOnInit(): void {
     // Parse the food string into an array of objects for each order
-    this.orders = this.orderService.loadData();
   }
 }
