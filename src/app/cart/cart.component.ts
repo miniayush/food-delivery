@@ -73,7 +73,7 @@ export class CartComponent {
       restaurantId: cartItems[0].restaurantId,
       userId: this.userService.getUser().user.id,
       orderTime: Date(),
-      food: this.reduceCart(cartItems),
+      food: JSON.stringify(this.reduceCart(cartItems)),
       status: 'active',
     };
 
