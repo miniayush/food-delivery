@@ -77,6 +77,7 @@ export class CartComponent {
     };
 
     this.postOrder(request);
+    this.cartService.clearCart();
   }
   postOrder(order: Order) {
     this.orderService.postOrder(order).subscribe(

@@ -45,6 +45,10 @@ export class CartService {
     );
   }
 
+  clearCart() {
+    this.cartItems = [];
+    this.cartUpdated.next([...this.cartItems]);
+  }
   getCartUpdateListener() {
     return this.cartUpdated.asObservable();
   }
