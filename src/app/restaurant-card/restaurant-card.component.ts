@@ -40,7 +40,6 @@ export class RestaurantCardComponent {
     this.restaurantService.setRestaurantDetails().subscribe(
       (response) => {
         this.restaurantService.restaurantDetails = response;
-        debugger;
       },
       (err) => {
         console.log('error');
