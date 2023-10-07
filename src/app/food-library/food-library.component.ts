@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FoodService, Food } from '../services/food.service';
+import { RestaurantService } from '../services/restaurant.service';
 
 @Component({
   selector: 'app-food-library',
@@ -9,13 +10,18 @@ import { FoodService, Food } from '../services/food.service';
 export class FoodLibraryComponent implements OnInit {
   searchTerm = '';
   foodItems: Food[] = [];
-
-  constructor(private foodService: FoodService) {}
+  restaurantDetails = {};
+  constructor(
+    private foodService: FoodService,
+    private restaurantService: RestaurantService
+  ) {}
 
   ngOnInit() {
     this.foodService.getFoodDetails().subscribe((data) => {
       this.foodItems = data;
     });
+    this.restaurantDetails = this.restaurantService.getRestaurantDetails();
+    debugger;
   }
 
   get filteredFoodItems() {

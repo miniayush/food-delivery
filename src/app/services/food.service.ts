@@ -15,7 +15,6 @@ export interface Food {
   providedIn: 'root',
 })
 export class FoodService {
-  private restaurantId = 0;
   private apiUrl = ''; // replace with your API endpoint
 
   constructor(private http: HttpClient) {}
@@ -23,8 +22,7 @@ export class FoodService {
   getFoodDetails(): Observable<Food[]> {
     return this.http.get<Food[]>(this.apiUrl);
   }
-  setRestaurantId(id: number) {
-    this.restaurantId = id;
-    this.apiUrl = `https://localhost:7261/api/Restaurant/${this.restaurantId}/fooditems`;
+  setRestaurant(id: number) {
+    this.apiUrl = `https://localhost:7261/api/Restaurant/${id}/fooditems`;
   }
 }

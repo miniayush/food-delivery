@@ -18,7 +18,6 @@ export class RestaurantLibraryComponent implements OnInit {
       (response) => {
         this.restaurantService.restaurants = response;
         this.restaurants = response;
-        console.log(response);
       },
       (error) => {
         //handle
