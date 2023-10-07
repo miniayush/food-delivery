@@ -15,21 +15,23 @@ export interface Restaurant {
 })
 export class RestaurantService {
   private restaurantId = 0;
-  public restaurantDetails = {};
+  private restaurantDetails = {};
   private apiUrl = 'https://localhost:7261/api/Restaurant'; // replace with your API URL
   restaurants: any;
   constructor(private http: HttpClient) {}
   getRestaurants() {
     return this.http.get(this.apiUrl);
   }
-  setRestaurantDetails() {
+  setRestaurant() {
     let url = `https://localhost:7261/api/Restaurant/${this.restaurantId}`;
     return this.http.get<Restaurant>(url);
   }
   getRestaurantDetails() {
     return this.restaurantDetails;
   }
-
+  setRestaurantDetails(restaurantDetails: any) {
+    this.restaurantDetails = restaurantDetails;
+  }
   setRestaurantId(id: number) {
     this.restaurantId = id;
   }

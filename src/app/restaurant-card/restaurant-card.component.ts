@@ -37,9 +37,10 @@ export class RestaurantCardComponent {
   navigateTo(path: any) {
     this.foodService.setRestaurant(this.restaurant.id);
     this.restaurantService.setRestaurantId(this.restaurant.id);
-    this.restaurantService.setRestaurantDetails().subscribe(
+    this.restaurantService.setRestaurant().subscribe(
       (response) => {
-        this.restaurantService.restaurantDetails = response;
+        this.restaurantService.setRestaurantDetails(response);
+        debugger;
       },
       (err) => {
         console.log('error');
