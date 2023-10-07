@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { FoodService } from '../services/food.service';
 
 @Component({
   selector: 'app-restaurant-card',
@@ -11,7 +12,7 @@ export class RestaurantCardComponent {
 
   imageLoaded: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private foodService: FoodService) {}
 
   getRatingColor(rating: number): string {
     if (rating >= 4) {
@@ -29,6 +30,7 @@ export class RestaurantCardComponent {
     this.imageLoaded = true;
   }
   navigateTo(path: any) {
+    this.foodService.setRestaurantId(this.restaurant.Id);
     this.router.navigate([path]);
   }
 }
