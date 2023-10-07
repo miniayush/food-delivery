@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 export interface Restaurant {
   id: number;
@@ -35,15 +36,9 @@ export class RestaurantService {
   setRestaurantId(id: number) {
     this.restaurantId = id;
   }
-  restaurantNameById(id: number): string {
-    let url = `https://localhost:7261/api/Restaurant/${id}`;
-    let name = '';
-    this.http.get<Restaurant>(url).subscribe(
-      (response) => {
-        name = response.name;
-      },
-      (err) => {}
+  restaurantNameById(id: any): Observable<Restaurant> {
+    return this.http.get<Restaurant>(
+      `https://localhost:7261/api/Restaurant/${id}`
     );
-    return name;
   }
 }

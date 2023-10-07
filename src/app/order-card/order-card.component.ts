@@ -12,10 +12,14 @@ export class OrderCardComponent implements OnInit {
   private restaurantName!: string;
   constructor(private restaurantService: RestaurantService) {}
   ngOnInit(): void {
-    this.restaurantName = this.restaurantService.restaurantNameById(
-      this.orderData.orderId
+    this.restaurantService.restaurantNameById(this.orderData.orderId).subscribe(
+      (response) => {
+        this.restaurantName = response.name;
+      },
+      (err) => {
+        console.log("couldn't get restaurant name");
+      }
     );
-    debugger;
   }
   getRestaurantName() {
     return this.restaurantName;
