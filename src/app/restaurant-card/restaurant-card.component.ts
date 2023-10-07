@@ -40,12 +40,11 @@ export class RestaurantCardComponent {
     this.restaurantService.setRestaurant().subscribe(
       (response) => {
         this.restaurantService.setRestaurantDetails(response);
-        debugger;
+        this.router.navigate([path]);
       },
       (err) => {
         console.log('error');
       }
     );
-    this.router.navigate([path]);
   }
 }
