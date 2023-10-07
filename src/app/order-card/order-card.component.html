@@ -9,16 +9,17 @@
     }"
   >
     <h5>Order ID: {{ orderData.orderId }}</h5>
+    <h6>{{ orderData.status }}</h6>
     <h6>{{ orderData.orderTime }}</h6>
   </div>
   <div class="card-body">
-    <h5 class="card-title">Restaurant ID: {{ orderData.restaurantId }}</h5>
-    <!-- show restaurant name -->
+    <h5 class="card-title">{{ getRestaurantName() }}</h5>
     <h6 class="card-subtitle mb-2 text-muted">Food Items:</h6>
     <ul class="list-group list-group-flush">
       <li class="list-group-item" *ngFor="let foodItem of orderData.food">
         {{ foodItem.name }} - {{ foodItem.price | currency : "INR" }} X
-        {{ foodItem.count }} | {{ foodItem.price * foodItem.count }}
+        {{ foodItem.count }} |
+        {{ foodItem.price * foodItem.count | currency : "INR" }}
       </li>
     </ul>
     <div class="card-footer bg-transparent border-success">

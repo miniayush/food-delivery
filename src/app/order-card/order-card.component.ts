@@ -1,5 +1,6 @@
 // order-card.component.ts
 import { Component, Input, OnInit } from '@angular/core';
+import { RestaurantService } from '../services/restaurant.service';
 
 @Component({
   selector: 'app-order-card',
@@ -8,7 +9,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class OrderCardComponent implements OnInit {
   @Input() orderData: any;
-
-  constructor() {}
-  ngOnInit(): void {}
+  private restaurantName!: string;
+  constructor(private restaurantService: RestaurantService) {}
+  ngOnInit(): void {
+    this.restaurantService.restaurantNameById(this.orderData.orderId);
+  }
+  getRestaurantName() {
+    return this.restaurantName;
+  }
 }

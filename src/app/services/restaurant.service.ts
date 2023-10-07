@@ -35,4 +35,15 @@ export class RestaurantService {
   setRestaurantId(id: number) {
     this.restaurantId = id;
   }
+  restaurantNameById(id: number): string {
+    let url = `https://localhost:7261/api/Restaurant/${id}`;
+    let name = '';
+    this.http.get<Restaurant>(url).subscribe(
+      (response) => {
+        name = response.name;
+      },
+      (err) => {}
+    );
+    return name;
+  }
 }
