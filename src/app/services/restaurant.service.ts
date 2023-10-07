@@ -1,6 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+export interface Restaurant {
+  id: number;
+  name: string;
+  restaurantId: number;
+  rating: number;
+  imageUrl: string;
+  description: string;
+  foodItems: null;
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -15,7 +24,7 @@ export class RestaurantService {
   }
   setRestaurantDetails() {
     let url = `https://localhost:7261/api/Restaurant/${this.restaurantId}`;
-    return this.http.get(url);
+    return this.http.get<Restaurant>(url);
   }
   getRestaurantDetails() {
     return this.restaurantDetails;
