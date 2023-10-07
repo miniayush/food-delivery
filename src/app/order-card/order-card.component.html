@@ -17,7 +17,8 @@
     <h6 class="card-subtitle mb-2 text-muted">Food Items:</h6>
     <ul class="list-group list-group-flush">
       <li class="list-group-item" *ngFor="let foodItem of orderData.food">
-        {{ foodItem.name }} - {{ foodItem.price | currency : "INR" }}
+        {{ foodItem.name }} - {{ foodItem.price | currency : "INR" }} X
+        {{ foodItem.count }} | {{ foodItem.price * foodItem.count }}
       </li>
     </ul>
     <div class="card-footer bg-transparent border-success">
