@@ -21,7 +21,6 @@ export class FoodLibraryComponent implements OnInit {
       this.foodItems = data;
     });
     this.restaurantDetails = this.restaurantService.getRestaurantDetails();
-    debugger;
   }
 
   get filteredFoodItems() {

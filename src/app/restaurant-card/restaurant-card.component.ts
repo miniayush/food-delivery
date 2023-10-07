@@ -39,6 +39,7 @@ export class RestaurantCardComponent {
     this.restaurantService.setRestaurantId(this.restaurant.id);
     this.restaurantService.setRestaurantDetails().subscribe((response) => {
       this.restaurantService.restaurantDetails = response;
+      debugger;
     });
     this.router.navigate([path]);
   }
