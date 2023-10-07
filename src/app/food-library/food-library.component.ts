@@ -10,7 +10,7 @@ import { RestaurantService } from '../services/restaurant.service';
 export class FoodLibraryComponent implements OnInit {
   searchTerm = '';
   foodItems: Food[] = [];
-  restaurantDetails = {};
+  restaurantDetails!: any;
   constructor(
     private foodService: FoodService,
     private restaurantService: RestaurantService
@@ -21,7 +21,6 @@ export class FoodLibraryComponent implements OnInit {
       this.foodItems = data;
     });
     this.restaurantDetails = this.restaurantService.getRestaurantDetails();
-    debugger;
   }
 
   get filteredFoodItems() {
