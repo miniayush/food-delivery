@@ -5,7 +5,7 @@
     class="form-control mb-3"
   />
   <div class="row">
-    <div class="col-sm-4 mb-3" *ngFor="let restaurant of restaurants">
+    <div class="col-sm-4 mb-3" *ngFor="let restaurant of filteredRestaurant">
       <app-restaurant-card [restaurant]="restaurant"></app-restaurant-card>
     </div>
   </div>
