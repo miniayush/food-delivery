@@ -31,4 +31,7 @@ export class AuthService {
     this.isLoggedIn = value;
     this.authStatusListener.next(value);
   }
+  logout() {
+    this.isLoggedIn = false;
+  }
 }

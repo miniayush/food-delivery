@@ -35,4 +35,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.authListenerSubs.unsubscribe();
   }
+
+  logout() {
+    this.authService.logout();
+  }
 }
