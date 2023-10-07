@@ -37,7 +37,9 @@ export class RestaurantCardComponent {
   navigateTo(path: any) {
     this.foodService.setRestaurant(this.restaurant.id);
     this.restaurantService.setRestaurantId(this.restaurant.id);
-    this.restaurantService.setRestaurantDetails();
+    this.restaurantService.setRestaurantDetails().subscribe((response) => {
+      this.restaurantService.restaurantDetails = response;
+    });
     this.router.navigate([path]);
   }
 }

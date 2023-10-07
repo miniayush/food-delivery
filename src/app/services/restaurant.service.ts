@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class RestaurantService {
   private restaurantId = 0;
-  private restaurantDetails = {};
+  public restaurantDetails = {};
   private apiUrl = 'https://localhost:7261/api/Restaurant'; // replace with your API URL
   restaurants: any;
   constructor(private http: HttpClient) {}
@@ -15,9 +15,7 @@ export class RestaurantService {
   }
   setRestaurantDetails() {
     let url = `https://localhost:7261/api/Restaurant/${this.restaurantId}`;
-    this.http.get(url).subscribe((response) => {
-      this.restaurantDetails = response;
-    });
+    return this.http.get(url);
   }
   getRestaurantDetails() {
     return this.restaurantDetails;
