@@ -9,6 +9,7 @@ import { RestaurantService } from '../services/restaurant.service';
 })
 export class RestaurantLibraryComponent implements OnInit {
   restaurants: any;
+  searchTerm = '';
 
   constructor(private restaurantService: RestaurantService) {}
 
@@ -23,5 +24,15 @@ export class RestaurantLibraryComponent implements OnInit {
         //handle
       }
     );
+  }
+
+  get filteredRestaurant() {
+    if (this.searchTerm) {
+      return this.restaurants.filter((restaurant: any) =>
+        restaurant.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    } else {
+      return this.restaurants;
+    }
   }
 }
