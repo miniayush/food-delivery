@@ -12,14 +12,16 @@ export class OrderCardComponent implements OnInit {
   private restaurantName!: string;
   constructor(private restaurantService: RestaurantService) {}
   ngOnInit(): void {
-    this.restaurantService.restaurantNameById(this.orderData.orderId).subscribe(
-      (response) => {
-        this.restaurantName = response.name;
-      },
-      (err) => {
-        console.log("couldn't get restaurant name");
-      }
-    );
+    this.restaurantService
+      .restaurantNameById(this.orderData.restaurantId)
+      .subscribe(
+        (response) => {
+          this.restaurantName = response.name;
+        },
+        (err) => {
+          console.log("couldn't get restaurant name");
+        }
+      );
   }
   getRestaurantName() {
     return this.restaurantName;

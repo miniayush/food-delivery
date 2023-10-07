@@ -9,7 +9,6 @@ export interface Restaurant {
   rating: number;
   imageUrl: string;
   description: string;
-  foodItems: null;
 }
 @Injectable({
   providedIn: 'root',
