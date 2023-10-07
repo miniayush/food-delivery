@@ -30,7 +30,7 @@ export class RestaurantCardComponent {
     this.imageLoaded = true;
   }
   navigateTo(path: any) {
-    this.foodService.setRestaurantId(this.restaurant.Id);
+    this.foodService.setRestaurantId(this.restaurant.id);
     this.router.navigate([path]);
   }
 }

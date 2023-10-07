@@ -16,7 +16,7 @@ export interface Food {
 })
 export class FoodService {
   private restaurantId = 0;
-  private apiUrl = `https://localhost:7261/api/Restaurant/${this.restaurantId}/fooditems`; // replace with your API endpoint
+  private apiUrl = ''; // replace with your API endpoint
 
   constructor(private http: HttpClient) {}
 
@@ -25,5 +25,6 @@ export class FoodService {
   }
   setRestaurantId(id: number) {
     this.restaurantId = id;
+    this.apiUrl = `https://localhost:7261/api/Restaurant/${this.restaurantId}/fooditems`;
   }
 }
