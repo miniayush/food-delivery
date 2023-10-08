@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/services/admin.service';
 
@@ -11,7 +12,8 @@ export class AdminUserCardComponent {
   @Input() user: any;
   constructor(
     private adminService: AdminService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
   deleteUser() {
     this.adminService.deleteUser(this.user.id).subscribe(
@@ -19,6 +21,7 @@ export class AdminUserCardComponent {
         this.toastr.success('User deleted Successfully!', '', {
           positionClass: 'toast-bottom-right',
         });
+        this.reloadComponent();
       },
       (error) => {
         console.error(error);
@@ -27,5 +30,11 @@ export class AdminUserCardComponent {
         });
       }
     );
+  }
+  reloadComponent() {
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
   }
 }
