@@ -3,6 +3,7 @@ import { CartService } from '../services/cart.service';
 import { Order, OrderService } from '../services/order.service';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -16,7 +17,8 @@ export class CartComponent {
     private cartService: CartService,
     private userService: UserService,
     private orderService: OrderService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {
     this.cartItems = this.cartService.getCartItems();
   }
@@ -34,39 +36,6 @@ export class CartComponent {
   }
   checkout() {
     let cartItems = this.cartService.getCartItems();
-    // let cartItems = [
-    //   {
-    //     id: 11,
-    //     name: 'Veg Burger',
-    //     description: 'Vegetarian burger with fresh veggies.',
-    //     rating: 4.2,
-    //     imageUrl:
-    //       'https://i.pinimg.com/564x/23/ed/80/23ed80fa26efafc1b694094243b0e0bd.jpg',
-    //     price: 80,
-    //     restaurantId: 2,
-    //   },
-    //   {
-    //     id: 11,
-    //     name: 'Veg Burger',
-    //     description: 'Vegetarian burger with fresh veggies.',
-    //     rating: 4.2,
-    //     imageUrl:
-    //       'https://i.pinimg.com/564x/23/ed/80/23ed80fa26efafc1b694094243b0e0bd.jpg',
-    //     price: 80,
-    //     restaurantId: 2,
-    //   },
-    //   {
-    //     id: 12,
-    //     name: 'Crispy Burger',
-    //     description: 'Crispy and crunchy burger with a special sauce.',
-    //     rating: 4.1,
-    //     imageUrl:
-    //       'https://freepngimg.com/thumb/burger%20sandwich/16-hamburger-burger-png-image-mac-burger.png',
-    //     price: 150,
-    //     restaurantId: 2,
-    //   },
-    // ];
-
     let request = {
       orderId: 0,
       restaurantId: cartItems[0].restaurantId,
@@ -74,6 +43,8 @@ export class CartComponent {
       orderTime: Date(),
       food: JSON.stringify(this.reduceCart(cartItems)),
       status: 'active',
+      rating: 0,
+      review: 'Not reviewed yet!',
     };
 
     this.postOrder(request);
@@ -85,6 +56,7 @@ export class CartComponent {
         this.toastr.success('Order placed successfully!', 'Success', {
           positionClass: 'toast-bottom-right',
         });
+        this.router.navigate(['profile']);
       },
       (error) => {
         this.toastr.success('Something went wrong!', 'Failed', {
