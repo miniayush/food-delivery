@@ -23,6 +23,7 @@ import { RegisterComponent } from './register/register.component';
 import { RestaurantOrderComponent } from './restaurant-order/restaurant-order.component';
 import { UserOrderComponent } from './user-order/user-order.component';
 import { OrderCardComponent } from './order-card/order-card.component';
+import { SiteAdminComponent } from './site-admin/site-admin.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { OrderCardComponent } from './order-card/order-card.component';
     RestaurantOrderComponent,
     UserOrderComponent,
     OrderCardComponent,
+    SiteAdminComponent,
   ],
   imports: [
     BrowserModule,

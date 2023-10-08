@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
 })
 export class AuthService {
   private apiUrl = 'https://localhost:7261/api/User'; // replace with your API URL
-  private isLoggedIn = false; //set to false
+  private isLoggedIn = true; //set to false
   private authStatusListener = new Subject<boolean>();
 
   constructor(private http: HttpClient) {}
