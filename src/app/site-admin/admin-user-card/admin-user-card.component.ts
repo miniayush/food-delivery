@@ -14,7 +14,7 @@ export class AdminUserCardComponent {
     private toastr: ToastrService
   ) {}
   deleteUser() {
-    this.adminService.deleteUser(this.user).subscribe(
+    this.adminService.deleteUser(this.user.id).subscribe(
       (response) => {
         this.toastr.success('User deleted Successfully!', '', {
           positionClass: 'toast-bottom-right',
