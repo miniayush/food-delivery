@@ -1,0 +1,9 @@
+.image-container {
+  width: 100%;
+  padding-top: 100%;
+  background-size: cover;
+  background-position: center;
+}
+.id-text {
+  margin-left: 10px;
+}

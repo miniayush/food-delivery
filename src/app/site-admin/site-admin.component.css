@@ -1,0 +1,7 @@
+.library {
+  height: 50vh; /* 50% of the viewport height */
+  overflow-y: auto; /* Add a vertical scrollbar when necessary */
+}
+.add {
+  height: 37px;
+}

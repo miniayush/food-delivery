@@ -1,0 +1,29 @@
+<div class="card mb-3" style="max-width: 100%">
+  <div class="row align-items-center g-0">
+    <div class="col-md-1">
+      <div
+        class="image-container"
+        [style.background-image]="'url(' + restaurant.imageUrl + ')'"
+      ></div>
+    </div>
+    <div class="col-md-9">
+      <div class="card-body">
+        <h5 class="card-title d-flex">
+          {{ restaurant.name }}
+          <!-- add space here -->
+          <p class="card-text id-text">
+            <small class="text-muted">{{ restaurant.id }}</small>
+          </p>
+        </h5>
+        <p class="card-text">
+          <small class="text-muted">{{ restaurant.description }}</small>
+        </p>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <button (click)="deleteRestaurant()" class="btn btn-danger">
+        Delete
+      </button>
+    </div>
+  </div>
+</div>
