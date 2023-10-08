@@ -27,12 +27,12 @@ export class RegisterComponent {
   onSubmit() {
     let request: any = this.userForm.value;
     request.id = 0;
-    console.log(request);
     this.userService.register(request).subscribe(
       (response) => {
         this.toastr.success(response.message, '', {
           positionClass: 'toast-bottom-right',
         });
+        this.router.navigate(['login']);
       },
       (error) => {
         this.toastr.success('Something went wrong!', '', {
