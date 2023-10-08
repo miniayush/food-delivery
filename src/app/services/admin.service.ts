@@ -21,7 +21,7 @@ export class AdminService {
   }
   deleteRestaurant(restaurantId: number): Observable<any> {
     return this.http.delete(
-      `https://localhost:7261/api/Admin/delete-user/${restaurantId}`
+      `https://localhost:7261/api/Admin/delete-restaurant/${restaurantId}`
     );
   }
 }
