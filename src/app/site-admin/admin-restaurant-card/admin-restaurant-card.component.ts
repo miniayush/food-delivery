@@ -17,7 +17,7 @@ export class AdminRestaurantCardComponent {
   ) {}
   deleteRestaurant() {
     console.log(this.restaurant.id);
-    this.adminService.deleteUser(this.restaurant.id).subscribe(
+    this.adminService.deleteRestaurant(this.restaurant.id).subscribe(
       (response) => {
         this.toastr.success('User deleted Successfully!', '', {
           positionClass: 'toast-bottom-right',

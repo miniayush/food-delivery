@@ -19,4 +19,9 @@ export class AdminService {
       `https://localhost:7261/api/Admin/delete-user/${userId}`
     );
   }
+  deleteRestaurant(restaurantId: number): Observable<any> {
+    return this.http.delete(
+      `https://localhost:7261/api/Admin/delete-user/${restaurantId}`
+    );
+  }
 }
