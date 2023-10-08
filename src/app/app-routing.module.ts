@@ -9,6 +9,7 @@ import { FoodLibraryComponent } from './food-library/food-library.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { RegisterComponent } from './register/register.component';
+import { SiteAdminComponent } from './site-admin/site-admin.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'admin', component: LoginAdminComponent },
+  { path: 'adminhome', component: SiteAdminComponent },
   { path: 'reset', component: ResetPasswordComponent },
 ];
 
