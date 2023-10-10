@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/services/admin.service';
 
@@ -17,7 +18,8 @@ export class AddRestaurantComponent {
 
   constructor(
     private adminService: AdminService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
   onSubmit(): void {
     let request = {
@@ -44,6 +46,7 @@ export class AddRestaurantComponent {
         this.toastr.success('Restaurant created successfully', '', {
           positionClass: 'toast-bottom-right',
         });
+        this.router.navigate(['adminhome']);
       },
       (err) => {
         console.error(err);
