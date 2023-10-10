@@ -25,7 +25,7 @@ export class AdminService {
     );
   }
   createRestaurant(request: any): Observable<any> {
-    return this.http.put<any>(
+    return this.http.post<any>(
       `https://localhost:7261/api/Admin/add-restaurant`,
       request
     );
