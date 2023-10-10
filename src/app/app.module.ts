@@ -26,6 +26,7 @@ import { OrderCardComponent } from './order-card/order-card.component';
 import { SiteAdminComponent } from './site-admin/site-admin.component';
 import { AdminRestaurantCardComponent } from './site-admin/admin-restaurant-card/admin-restaurant-card.component';
 import { AdminUserCardComponent } from './site-admin/admin-user-card/admin-user-card.component';
+import { AddRestaurantComponent } from './site-admin/add-restaurant/add-restaurant.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { AdminUserCardComponent } from './site-admin/admin-user-card/admin-user-
     SiteAdminComponent,
     AdminRestaurantCardComponent,
     AdminUserCardComponent,
+    AddRestaurantComponent,
   ],
   imports: [
     BrowserModule,

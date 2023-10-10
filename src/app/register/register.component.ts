@@ -15,13 +15,20 @@ export class RegisterComponent {
     private userService: UserService,
     private toastr: ToastrService
   ) {}
+
   userForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    username: new FormControl(''),
-    password: new FormControl(''),
-    email: new FormControl(''),
-    phoneNumber: new FormControl(''),
+    firstName: new FormControl('', Validators.required),
+    lastName: new FormControl('', Validators.required),
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8),
+    ]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    phoneNumber: new FormControl('', [
+      Validators.required,
+      Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$'),
+    ]),
   });
 
   onSubmit() {
