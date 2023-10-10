@@ -46,7 +46,9 @@ export class SiteAdminComponent {
       return this.users;
     }
   }
-  addUser() {}
+  addUser() {
+    this.router.navigate(['register']);
+  }
   addRestaurant() {
     this.router.navigate(['add-restaurant']);
   }
