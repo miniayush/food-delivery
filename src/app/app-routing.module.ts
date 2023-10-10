@@ -10,6 +10,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { RegisterComponent } from './register/register.component';
 import { SiteAdminComponent } from './site-admin/site-admin.component';
+import { AddRestaurantComponent } from './site-admin/add-restaurant/add-restaurant.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'admin', component: LoginAdminComponent },
   { path: 'adminhome', component: SiteAdminComponent },
   { path: 'reset', component: ResetPasswordComponent },
+  { path: 'add-restaurant', component: AddRestaurantComponent },
 ];
 
 @NgModule({

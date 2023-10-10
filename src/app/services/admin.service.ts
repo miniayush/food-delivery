@@ -24,4 +24,10 @@ export class AdminService {
       `https://localhost:7261/api/Admin/delete-restaurant/${restaurantId}`
     );
   }
+  createRestaurant(request: any): Observable<any> {
+    return this.http.put<any>(
+      `https://localhost:7261/api/Admin/add-restaurant`,
+      request
+    );
+  }
 }

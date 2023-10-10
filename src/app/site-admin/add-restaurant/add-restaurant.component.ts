@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-add-restaurant',
@@ -13,8 +15,40 @@ export class AddRestaurantComponent {
     description: new FormControl(''),
   });
 
+  constructor(
+    private adminService: AdminService,
+    private toastr: ToastrService
+  ) {}
   onSubmit(): void {
-    // Process input data here
+    let request = {
+      id: 0,
+      name: this.inputForm.value.name,
+      restaurantId: 0,
+      rating: 0,
+      imageUrl: this.inputForm.value.imageUrl,
+      description: this.inputForm.value.description,
+      foodItems: [
+        {
+          id: 0,
+          name: 'string',
+          description: 'string',
+          rating: 0,
+          imageUrl: 'string',
+          price: 0,
+          restaurantId: 0,
+        },
+      ],
+    };
+    this.adminService.createRestaurant(request).subscribe(
+      (response) => {
+        this.toastr.success('Restaurant created successfully', '', {
+          positionClass: 'toast-bottom-right',
+        });
+      },
+      (err) => {
+        console.error(err);
+      }
+    );
     console.log(this.inputForm.value);
   }
 }

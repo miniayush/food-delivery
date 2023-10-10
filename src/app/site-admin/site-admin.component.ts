@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AdminService } from '../services/admin.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-site-admin',
@@ -12,7 +13,7 @@ export class SiteAdminComponent {
   searchRestaurant = '';
   searchUser = '';
 
-  constructor(private adminService: AdminService) {}
+  constructor(private adminService: AdminService, private router: Router) {}
 
   ngOnInit() {
     this.adminService.getUsers().subscribe(
@@ -46,7 +47,9 @@ export class SiteAdminComponent {
     }
   }
   addUser() {}
-  addRestaurant() {}
+  addRestaurant() {
+    this.router.navigate(['add-restaurant']);
+  }
   setUsers(users: any) {
     this.users = users;
   }
