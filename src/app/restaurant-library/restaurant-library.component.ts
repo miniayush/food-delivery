@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RestaurantService } from '../services/restaurant.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-restaurant-library',
@@ -11,7 +12,10 @@ export class RestaurantLibraryComponent implements OnInit {
   restaurants: any;
   searchTerm = '';
 
-  constructor(private restaurantService: RestaurantService) {}
+  constructor(
+    private restaurantService: RestaurantService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.restaurantService.getRestaurants().subscribe(
@@ -20,7 +24,9 @@ export class RestaurantLibraryComponent implements OnInit {
         this.restaurants = response;
       },
       (error) => {
-        //handle
+        this.toastr.error('Something went wrong!', '', {
+          positionClass: 'toast-bottom-right',
+        });
       }
     );
   }
